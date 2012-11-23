@@ -2,24 +2,56 @@ php-mp3info is a mp3info (http://ibiblio.org/mp3info/) bindings for PHP.
 
 REQUIREMENTS 
 
-Files for PHP5 module development
-$ apt-get install php5-dev
+	Files for PHP5 module development
+	$ apt-get install php5-dev
 
 INSTALLATION 
 
-$ phpize
-$ ./configure
-$ make
-$ make install
+	$ phpize
+	$ ./configure
+	$ make
+	$ make install
 
 Enable extension in PHP
 
-$ echo "extension=mp3info.so" > /etc/php5/apache2/conf.d/mp3info.ini
-$ echo "extension=mp3info.so" > /etc/php5/cli/conf.d/mp3info.ini
-$ /etc/init.d/apache2 restart
+	$ echo "extension=mp3info.so" > /etc/php5/apache2/conf.d/mp3info.ini
+	$ echo "extension=mp3info.so" > /etc/php5/cli/conf.d/mp3info.ini
+	$ /etc/init.d/apache2 restart
 
 USAGE
 
-mp3_get_info( [Path to mp3 file] );
+	mp3_get_info( [Path to mp3 file] );
 
+EXAMPLE OUTPUT
+
+	Array
+	(
+	    [seconds] => 343
+	    [frames] => 13155
+	    [badframes] => 0
+	    [id3] => Array
+		(
+		    [title] => Eve
+		    [artist] => Emancipator
+		    [album] => Soon It Will Be Cold Enough
+		    [year] => 2006
+		    [comment] =>
+		)
+
+	    [header] => Array
+		(
+		    [sync] => 4094
+		    [version] => 1
+		    [bitrate] => 10
+		    [freq] => 0
+		    [padding] => 0
+		    [extension] => 0
+		    [mode] => 1
+		    [mode_extension] => 2
+		    [copyright] => 0
+		    [original] => 1
+		    [emphasis] => 0
+		)
+
+	)
 
