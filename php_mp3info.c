@@ -30,19 +30,15 @@ zend_module_entry mp3info_module_entry = {
 ZEND_GET_MODULE(mp3info)
 #endif
 
-zval *get_zval_id3( mp3info *mp3 )
-{
+zval *get_zval_id3( mp3info *mp3 ) {
 	zval *id3;	
 
-	if( !mp3->id3_isvalid ) 
-	{
+	if( !mp3->id3_isvalid ) {
 		return 0;
 	}
 
-	id3 = emalloc( sizeof(zval) );
-	
-	if( id3 == 0 ) 
-	{
+	MAKE_STD_ZVAL(id3);
+	if( id3 == 0 ) {
 		return 0;
 	}
 
@@ -56,18 +52,15 @@ zval *get_zval_id3( mp3info *mp3 )
 	return id3;
 }
 
-zval *get_zval_header( mp3info *mp3 )
-{
+zval *get_zval_header( mp3info *mp3 ) {
 	zval *header;
 
-	if( !mp3->header_isvalid )
-	{
+	if( !mp3->header_isvalid ) {
 		return 0;
 	}
 
-	header = emalloc( sizeof(zval) );
-	if( header == 0 )
-	{
+	MAKE_STD_ZVAL(header);
+	if( header == 0 ) {
 		return 0;
 	}
 
@@ -91,8 +84,7 @@ zval *get_zval_header( mp3info *mp3 )
 
 }
 
-PHP_FUNCTION(mp3_get_info)
-{
+PHP_FUNCTION(mp3_get_info) {
 	char *filename;
 	int filename_len;
 	int want_id3=1, scantype=SCAN_QUICK, fullscan_vbr=1;
@@ -122,14 +114,12 @@ PHP_FUNCTION(mp3_get_info)
 	add_assoc_long(return_value, "badframes", mp3.badframes);
 	
 	id3 = get_zval_id3( &mp3 );
-	if( id3 != 0 ) 
-	{	
+	if( id3 != 0 ) {	
 		add_assoc_zval(return_value, "id3", id3);
 	}
 
 	header = get_zval_header( &mp3 );
-	if( header != 0 )
-	{
+	if( header != 0 ) {
 		add_assoc_zval(return_value, "header", header);
 	}
 }

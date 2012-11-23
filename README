@@ -2,8 +2,7 @@ php-mp3info is a mp3info (http://ibiblio.org/mp3info/) bindings for PHP.
 
 REQUIREMENTS 
 
-	Files for PHP5 module development
-	$ apt-get install php5-dev
+	$ apt-get install php5-dev libncurses-dev
 
 INSTALLATION 
 
