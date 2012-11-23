@@ -1,0 +1,25 @@
+php-mp3info is a mp3info (http://ibiblio.org/mp3info/) bindings for PHP.
+
+REQUIREMENTS 
+
+Files for PHP5 module development
+$ apt-get install php5-dev
+
+INSTALLATION 
+
+$ phpize
+$ ./configure
+$ make
+$ make install
+
+Enable extension in PHP
+
+$ echo "extension=mp3info.so" > /etc/php5/apache2/conf.d/mp3info.ini
+$ echo "extension=mp3info.so" > /etc/php5/cli/conf.d/mp3info.ini
+$ /etc/init.d/apache2 restart
+
+USAGE
+
+mp3_get_info( [Path to mp3 file] );
+
+
